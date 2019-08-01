@@ -1,0 +1,28 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>vue hello abc</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    {{content}}
+    </div>
+    <script>
+      const vue = new Vue({
+        el:"#app",  //实例负责管理的区域
+        data:{
+
+          content:'hello 廖鹏辉真帅'
+
+        }
+
+      });
+
+
+      setTimeout(function () {
+        vue.$data.content = "雪糕最可爱";
+      },2000);
+    </script>
+  </body>
+</html>

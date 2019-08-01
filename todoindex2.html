@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do list</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+
+
+<div id="app">
+    <input  type="text"  v-model="inputText">
+    <button  v-on:click="submit"> 提交</button>
+
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+
+
+
+</div>
+
+
+<script>
+
+    const vue = new Vue({
+        el:"#app",
+        data:{
+            list:['第一天','第二天'],
+            inputText:""
+        },
+        methods:{
+            submit:function() {
+             this.list.push(this.inputText)
+            }
+
+
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>

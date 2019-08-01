@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>to do update</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputcontent"/>
+    <button v-on:click="commit1">提交</button>
+    <ul>
+       <todo-list v-for="item in list" v-bind:content="item"></todo-list>
+    </ul>
+</div>
+</body>
+
+
+<script>
+    // //全局的组件
+    // Vue.component("TodoList",{
+    //     props:['content'],
+    //     template:"<li>{{content}}</li>",
+    // });
+
+
+    //局部组件的注册
+    var TodoList={
+        props: ["content"],
+        template: "<li>{{content}}</li>",
+    };
+
+
+    const vue = new Vue({
+        el: "#app",
+        components:{
+          TodoList:TodoList,
+
+
+        },
+        data: {
+            content: "hello",
+            list: [],
+            inputcontent: "",
+
+        },
+        methods: {
+            commit1: function () {
+                this.list.push(this.inputcontent);
+            },
+        }
+
+
+    });
+
+
+</script>
+</html>
