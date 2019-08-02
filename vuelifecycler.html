@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE 生命周期</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div  id="app">
+<h1>{{content}}</h1>
+<button @click="destroy">销毁</button>
+
+</div>
+
+
+
+
+<script>
+    const vue = new Vue({
+        el:"#app",
+        beforeCreate:function(){
+            this.content = "beforeCreate";
+            console.log("beforeCreate");
+        },
+        created:function(){
+          this.content  = "created"
+            console.log("created");
+        },
+        beforeMount:function(){
+            console.log("beforeMount");
+        },
+        mounted:function(){
+            console.log("mounted");
+        },
+        beforeDestroy:function(){
+            console.log("beforeDestroy");
+        },
+        destroyed:function(){
+            console.log("destroyed");
+        },
+        data:{
+          content:"",
+
+
+        },
+
+        methods:{
+            destroy:function () {
+              vue.$destroy()
+            },
+        }
+
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>

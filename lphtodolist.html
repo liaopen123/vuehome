@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>廖鹏辉TodoList最终版</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div id="container">
+    <h1>廖鹏辉的TodoList</h1>
+    <input type="text"  v-model="todo_content"/>
+    <button  @click="add">添加</button>
+    <h3>未完成</h3>
+    <ul>
+        <todo-item  v-for="(item,index) in undoList"  v-bind:content="item"  v-bind:index="index"  @delete="deleteItemWithIndex(index)"></todo-item>
+    </ul>
+    <h3>已完成</h3>
+
+    <ul>
+        <todo-item  v-for="(item,index) in doneList"  v-bind:content="item"  v-bind:index="index" ></todo-item>
+
+    </ul>
+
+
+</div>
+
+<script>
+
+
+    var TodoItem = {
+        props:["content","index"],
+        template:"<li @click='deleteIteml(index)'>{{content}}</li>",
+        methods: {
+            deleteIteml:function (index) {
+                this.$emit("delete")
+
+            }
+
+
+
+        }
+    };
+
+
+
+    const vue = new Vue(
+        {
+            el: "#container",
+            components:{
+                TodoItem:TodoItem,
+
+
+
+            },
+            data: {
+                todo_content:"",
+                undoList: [],
+                doneList: [],
+
+
+            },
+            methods: {
+                add:function () {
+                    this.undoList.push(this.todo_content)
+                },
+
+                deleteItemWithIndex:function (index) {
+                    const item = this.undoList[index];
+                    this.undoList.splice(index,1);
+                    this.doneList.push(item);
+
+                }
+
+
+
+            }
+
+
+        }
+    )
+
+
+</script>
+
+
+</body>
+</html>
