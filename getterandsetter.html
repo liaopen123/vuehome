@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性的getterandsetter</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+</div>
+
+
+
+<script>
+    const vue = new  Vue({
+        el:"#app",
+        data:{
+            firstName:"鹏辉",
+            lastName:"廖",
+        },
+        computed:{
+            fullName:{
+                get:function () {
+                  return this.firstName+"..."+this.lastName;
+                },
+
+
+                set:function (value) {
+                    var array = value.split(" ");
+                    this.firstName  = array[0];
+                    this.lastName  = array[1];
+                }
+            }
+
+
+
+        }
+
+
+
+
+
+
+    });
+
+
+</script>
+</body>
+</html>

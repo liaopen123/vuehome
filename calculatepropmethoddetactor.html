@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性，方法，侦听器</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <div>{{fullName()}}</div>
+
+
+</div>
+<script>
+    const vue = new Vue({
+        el: "#app",
+        data: {
+            firstName: "鹏辉",
+            lastName: "廖",
+            // fullName: "鹏辉 廖"
+        },
+
+
+        watch: {
+            firstName: function () {
+                console.log("firstName has changed");
+                this.fullName = this.firstName + this.lastName + "firstName has changed";
+            },
+            lastName: function () {
+                console.log("lastName has changed");
+                this.fullName = this.firstName + this.lastName + "lastName has changed";
+            }
+
+        },
+        // computed: {
+        //     fullName:function () {
+        //         console.log("我有缓存，除非关联的值发生变化，我只变动一次.");
+        //         return this.firstName + this.lastName;
+        //     }
+        // }
+
+
+
+        methods:{
+            fullName:function () {
+
+                return this.firstName + this.lastName;
+
+            }
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

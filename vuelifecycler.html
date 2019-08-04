@@ -39,6 +39,12 @@
         destroyed:function(){
             console.log("destroyed");
         },
+        beforeUpdate:function(){
+            console.log("beforeUpdate");
+        },
+        updated:function(){
+            console.log("updated");
+        },
         data:{
           content:"",
 
@@ -47,7 +53,8 @@
 
         methods:{
             destroy:function () {
-              vue.$destroy()
+                this.content = "11111111"
+              // vue.$destroy()
             },
         }
 
