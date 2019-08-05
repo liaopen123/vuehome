@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子见组件的传值  bus</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <label1 content="好好学习"></label1>
+    <label1 :content="{{ddup}}"></label1>
+
+</div>
+
+
+<script>
+
+    Vue.prototype.bus = new Vue();
+
+    const label1 = {
+        props: {
+            content: {
+                type: String,
+            }
+        },
+        data: function () {
+
+            return {
+                content1: this.content,
+            }
+
+        },
+        template: "<div @click='doNext'>{{content1}}</div>",
+
+        methods:{
+            doNext:function () {
+                this.bus.$emit("sendText",this.content1);
+            }
+
+
+        }
+
+    };
+
+    const  vue = new Vue({
+        el:"#app",
+        components:{
+            label1:label1,
+        },
+
+        data:{
+            ddup:"天天向上",
+        },
+
+        mounted:function () {
+            var this_ = this;
+            this.bus.$on("sendText",function (value) {
+                alert(value)
+                this_.ddup = value
+            })
+        }
+    });
+
+</script>
+
+
+
+
+</body>
+</html>

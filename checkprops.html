@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件参数校验与非props特性</title>
+<!--    主要通过 自定义组件中的props写法来控制校验接收到的数据的类型。-->
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+
+    <child ></child>
+
+</div>
+
+
+<script>
+
+    var child = {
+        // props:['content'],
+        // props:{
+        //     content:String,
+        // },
+        props:{
+            content:{
+                type:String,
+                required:true,
+                // default:"我是默认值",
+                validator:function (value) {
+                    return value.length>5;
+                    // 校验器
+                }
+            }
+        },
+        data:function(){
+
+          return {
+              content1 : this.content,
+          }
+
+
+        },
+        template:'<div> child {{content1}}</div>'
+
+
+    };
+
+
+    const vue = new Vue({
+
+        el:"#root",
+        components:{
+            child:child,
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>

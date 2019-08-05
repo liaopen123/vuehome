@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件之间传递数据</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+
+<counter :count="0"  @count="getCounter"></counter>
+<!--    如果用: 表示""中包含的则是js表达式，0是int类型的,如果不用:，则0表示字符串的0-->
+
+<counter :count="91"  @count="getCounter"></counter>
+</div>
+
+
+
+
+<script>
+
+
+   var counter = {
+       props:['count',],//向内接收数据
+       data:function(){
+
+           return {
+               number:this.count
+           }
+
+       },
+       template:"<div @click='clickNumber'>{{number}}</div>",
+       methods:{
+           clickNumber:function () {
+               this.number++
+               this.$emit("count",this.number)  //向外传递数据
+           }
+
+
+       }
+   };
+
+    const vue = new Vue({
+        el:"#root",
+        components:{
+            counter:counter
+        },
+        methods: {
+            getCounter:function (value) {
+                alert("value"+value);
+            }
+        }
+
+
+    });
+
+</script>
+</body>
+</html>
