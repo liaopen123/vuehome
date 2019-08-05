@@ -13,6 +13,11 @@
 
         <h3>廖鹏辉 最爱小雪糕</h3>
     </child>
+    <child>
+
+        <h3 slot="header">廖鹏辉 最爱小雪糕 header</h3>
+        <h3 slot="footer">廖鹏辉 最爱小雪糕 footer</h3>
+    </child>
 
 </div>
 
@@ -23,7 +28,9 @@
 
         template: `<div>
                 <h1>hello world</h1>
-                <slot></slot>
+                <slot name="header"></slot>
+                <h2>我是中间</h2>
+                     <slot name="footer"></slot>
 </div>`,
 
 
