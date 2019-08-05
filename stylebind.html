@@ -14,7 +14,7 @@
 
 
 <div id="app">
-    <div v-html="content"  @click="onTextClick"  :class="{activited:isActivited}"></div>
+    <div v-html="content"  @click="onTextClick"  :class="[activited]"></div>
 
 </div>
 <script>
@@ -24,12 +24,12 @@
         el:"#app",
         data:{
             content:"<h1>hello world</h1>",
-            isActivited:false,
+            activited:"",
         },
         methods:{
             onTextClick:function () {
                 console.log("clicked");
-                this.isActivited = !this.isActivited;
+                this.activited = "activited";
 
             }
         },

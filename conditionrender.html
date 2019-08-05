@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+    <div v-if="isShow"> {{content}}</div>
+    <div v-else> {{content}}</div>
+    <div v-show="isShow"> {{content1}}</div>
+    <!--v-if 和 v-show的区别就是:if 如果为false直接没有这行代码，而v-show则是如果为false，则把相关属性display设置为gone.-->
+    <!--v-if 和 v-else必须连在一起用-->
+
+    <div v-if="alpha==='a'"> 现在alpha是A</div>
+    <div v-else-if="alpha==='b'"> 现在alpha是b</div>
+    <div v-else> 现在alpha是其他字母</div>
+
+
+</div>
+
+<script>
+
+    const vue = new Vue({
+        el: "#app",
+        data: {
+            isShow: true,
+            alpha: 'a',
+            content: "廖鹏辉好耍",
+            content1: "雪糕好可爱",
+        },
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>

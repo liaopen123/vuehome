@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <script src="./vue.js"></script>
+
+
+</head>
+<body>
+
+<div id="app">
+
+    <div v-for="item in userInfo">{{item}}</div>
+
+</div>
+
+<!--可以通过Vue.set(vue.userInfo,"home","beijing")设置值-->
+<!--可以通过vue.$set(vue.userInfo,"home","beijing")设置值-->
+
+
+<script>
+    const vue = new Vue({
+        el:"#app",
+        data:{
+
+            userInfo:{
+                name:"liaopenghui",
+                age:"22",
+                sex:"male"
+            }
+
+        }
+
+
+
+
+    });
+
+
+
+</script>
+</body>
+</html>
