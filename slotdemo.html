@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>插槽</title>
+    <title>插槽 通过给组件添加slot标签 进行插槽</title>
+    <script src="./vue.js"></script>
 </head>
 <body>
+
+<div id="root">
+
+    <child>
+
+        <h3>廖鹏辉 最爱小雪糕</h3>
+    </child>
+
+</div>
+
+
+<script>
+
+    Vue.component("child", {
+
+        template: `<div>
+                <h1>hello world</h1>
+                <slot></slot>
+</div>`,
+
+
+    });
+
+    const vue = new Vue({
+
+        el: "#root",
+
+
+    });
+</script>
+
 
 </body>
 </html>
