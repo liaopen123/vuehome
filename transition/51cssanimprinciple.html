@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中CSS动画的原理</title>
+    <script src="../vue.js"></script>
+    <style>
+        .v-enter{
+            opacity: 0;
+        }
+        .v-enter-active{
+            transition: opacity 3s;
+        }
+        .v-leave-to{
+            opacity: 0;
+        }
+        .v-leave-active{
+            transition: opacity 3s;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <transition>
+
+        <h1 v-if="show">hello world</h1>
+
+    </transition>
+
+    <button @click="transitionview">hide/show</button>
+
+</div>
+
+
+<script>
+
+    const vue = new Vue({
+        el:"#root",
+        data:{
+          show : true,
+
+
+        },
+        methods:{
+            transitionview:function () {
+                this.show = !this.show;
+
+            }
+        }
+
+    });
+
+
+
+</script>
+</body>
+</html>
