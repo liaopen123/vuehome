@@ -4,36 +4,11 @@
     <meta charset="UTF-8">
     <title>Vue中CSS动画的原理</title>
     <script src="../vue.js"></script>
-    <style>
-        @keyframes  bounce-in{
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-            100% {
-                transform: scale(1.0);
-            }
-        }
-
-
-        .enter{
-            transform-origin: left center;
-            animation:bounce-in 1s;
-        }
-
-        .leave{
-            transform-origin: left center;
-            animation:bounce-in 1s reverse;
-
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="./animate.css">
 </head>
 <body>
 <div id="root">
-    <transition name="fade"  enter-active-class="enter" leave-active-class="leave" >
+    <transition name="fade" appear enter-active-class="animated swing" leave-active-class="animated shake" appear-active-class="animated swing" >
 
         <h1 v-if="show">hello world</h1>
 
